@@ -1,17 +1,24 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
-
+from .models import Investimento
 
 def pagina_inicial(request):
     return HttpResponse('Pronto para investir!')
 
-def contato(request):
-    return HttpResponse('Encaminhe um e-mail para leopoldo@ufjf.br')
 
-def minha_historia(request):
-    pessoa = {
-        'nome':'Leopoldo',
-        'idade': 28,
-        'hobby': 'games'
+def novo_investimento(request):
+    return render(request,'investimentos/novo_investimento.html')
+
+
+
+def investimentos(request):
+    dados = {
+        'dados': Investimento.objects.all()
     }
-    return render(request,'investimentos/minha_historia.html',pessoa)
+    return render(request,'investimentos/investimentos.html',context=dados)
+
+def detalhe(request,id_investimento):
+    dados = {
+        'dados' : Investimento.objects.get(pk=id_investimento)
+    }
+    return render(request,'investimentos/detalhe.html',dados)
