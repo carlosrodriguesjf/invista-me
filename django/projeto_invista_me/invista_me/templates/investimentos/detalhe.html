@@ -1,5 +1,8 @@
-<h1>Detalhe do Investimento</h1>
-<table>
+{% extends 'investimentos/base.html' %}
+{% block conteudo %}
+<h1 style="text-align: center">Detalhe do Investimento</h1>
+<div class ='container'></div>
+<table class="table table-hover table-bordered">
     <tr>
         <th>Id</th>
         <th>Investimento</th>
@@ -15,3 +18,5 @@
         <td>{{dados.pago}}</td>
     </tr>
 </table>
+</div>
+{% endblock %}

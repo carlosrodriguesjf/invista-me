@@ -1,8 +1,12 @@
-<form action="{% url 'investimento_registrado' %}" method="post">
-    {% csrf_token  %}
-    <label for=""> Tipo de investimento</label>
-    <input type="text" name='TipoInvestimento'>
-    <button type="submit">Salvar</button>
-
-
-</form>
+{%  extends 'investimentos/base.html' %}
+{% block conteudo %}
+{% load crispy_forms_tags %}
+<div class = 'container'>
+    <h1>Formulário Novo Investimento</h1>
+    <form action="" method="post">
+        {% csrf_token  %}
+        {{formulario | crispy}}
+        <button type="submit" class = 'btm btn-success'>Salvar</button>
+    </form>
+</div>
+{% endblock %}
